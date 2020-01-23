@@ -1,0 +1,8 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "contact": {
+    "phoneNumber": "+13053053005",
+    "email": "john@doe.com"
+  }
+}

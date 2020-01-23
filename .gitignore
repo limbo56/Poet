@@ -1,0 +1,12 @@
+# IntelliJ
+.idea
+*.iml
+/out
+gen
+
+# Maven
+**/target
+dependency-reduced-pom.xml
+
+# Other
+.DS_Store
