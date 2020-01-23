@@ -1,5 +1,6 @@
 package me.davidrdc.poet;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,13 +27,19 @@ public class DirectoryTest {
             Poet.getFileFromResources("testDirectory", DirectoryTest.class.getClassLoader()));
   }
 
+  private static void assertArrayEqualsSorted(Object[] array1, Object[] array2, String message) {
+    Arrays.sort(array1);
+    Arrays.sort(array2);
+    assertArrayEquals(array1, array2, message);
+  }
+
   @Test
   @Order(1)
   void getFilesFromDirectoryTest() {
     // Check for files currently in directory
-    assertEquals(
-        Arrays.asList("some.txt", "test.txt"),
-        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
+    assertArrayEqualsSorted(
+        new String[] {"some.txt", "test.txt"},
+        Objects.requireNonNull(testDirectory.list()),
         "Files in directory");
   }
 
@@ -46,9 +53,9 @@ public class DirectoryTest {
     }
 
     // Check if file was added to directory
-    assertEquals(
-        Arrays.asList("other.yml", "some.txt", "test.txt"),
-        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
+    assertArrayEqualsSorted(
+        new String[] {"other.yml", "some.txt", "test.txt"},
+        Objects.requireNonNull(testDirectory.list()),
         "Add file to directory");
   }
 
@@ -58,9 +65,9 @@ public class DirectoryTest {
     testDirectory.removeFile("other.yml");
 
     // Check if file was removed from the directory
-    assertEquals(
-        Arrays.asList("some.txt", "test.txt"),
-        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
+    assertArrayEqualsSorted(
+        new String[] {"some.txt", "test.txt"},
+        Objects.requireNonNull(testDirectory.list()),
         "Remove file from directory");
   }
 
