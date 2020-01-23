@@ -1,5 +1,6 @@
 # Poet
 [![](https://jitpack.io/v/limbo56/Poet.svg)](https://jitpack.io/#limbo56/Poet)
+[![Build Status](https://travis-ci.org/limbo56/Poet.svg?branch=master)](https://travis-ci.org/limbo56/Poet)
 
 Poet is a file management and serialization tool written in Java. Poet aims to ease the process of serializing files and managing directories and their content.
 
