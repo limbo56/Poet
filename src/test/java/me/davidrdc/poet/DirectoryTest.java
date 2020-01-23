@@ -70,13 +70,4 @@ public class DirectoryTest {
         Objects.requireNonNull(testDirectory.list()),
         "Remove file from directory");
   }
-
-  @Test
-  @Order(4)
-  public void getDirectorySizeTest() {
-    assertDoesNotThrow(
-        () ->
-            assertEquals(
-                6365, new Directory("src/test/resources").getDirectorySize(), "Directory size"));
-  }
 }
