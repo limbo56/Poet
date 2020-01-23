@@ -1,11 +1,11 @@
 package me.davidrdc.poet;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 import me.davidrdc.poet.poet.Poet;
 import me.davidrdc.poet.poet.directories.Directory;
@@ -30,9 +30,9 @@ public class DirectoryTest {
   @Order(1)
   void getFilesFromDirectoryTest() {
     // Check for files currently in directory
-    assertArrayEquals(
-        new String[] {"some.txt", "test.txt"},
-        Objects.requireNonNull(testDirectory.list()),
+    assertEquals(
+        Arrays.asList("some.txt", "test.txt"),
+        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
         "Files in directory");
   }
 
@@ -46,9 +46,9 @@ public class DirectoryTest {
     }
 
     // Check if file was added to directory
-    assertArrayEquals(
-        new String[] {"other.yml", "some.txt", "test.txt"},
-        Objects.requireNonNull(testDirectory.list()),
+    assertEquals(
+        Arrays.asList("other.yml", "some.txt", "test.txt"),
+        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
         "Add file to directory");
   }
 
@@ -58,9 +58,9 @@ public class DirectoryTest {
     testDirectory.removeFile("other.yml");
 
     // Check if file was removed from the directory
-    assertArrayEquals(
-        new String[] {"some.txt", "test.txt"},
-        Objects.requireNonNull(testDirectory.list()),
+    assertEquals(
+        Arrays.asList("some.txt", "test.txt"),
+        Arrays.asList(Objects.requireNonNull(testDirectory.list())),
         "Remove file from directory");
   }
 
