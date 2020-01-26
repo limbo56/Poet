@@ -52,7 +52,7 @@ JsonObject object = Deserializer.deserializeFile(file, JsonObject.class);
 The [`Directory`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/directories/Directory.html) class is aimed to ease the handling of directories. 
 It contains a variety of methods useful for handling files which extends the [`File`](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) class.
 
-#### Bundles
+### Bundles
 You can bundle multiple directories using the [`DirectoryBundle`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/directories/DirectoryBundle.html) 
 class. This class helps when you want to access common files in multiple directories. For example, this would be useful for localization.
 
