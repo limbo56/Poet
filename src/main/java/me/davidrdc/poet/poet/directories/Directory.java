@@ -63,7 +63,7 @@ public class Directory extends File {
    * Moves the current directory and all its contents to a new path
    *
    * <p>This method uses the {@link Files#move(Path, Path, CopyOption...)} method to move the
-   * directory and it's contents. The default {@link CopyOption}s used is {@link
+   * directory and it's contents. The default {@link CopyOption} used is {@link
    * StandardCopyOption#REPLACE_EXISTING}
    *
    * @param path to move directory to
@@ -75,13 +75,13 @@ public class Directory extends File {
   /**
    * Moves the current directory and all its contents to a new path
    *
-   * <p>This method uses the {@link Files#move(Path, Path, CopyOption...)} method to move the *
-   * directory and it's contents. The default {@link CopyOption}s used is {@link *
+   * <p>This method uses the {@link Files#move(Path, Path, CopyOption...)} method to move the
+   * directory and it's contents. The default {@link CopyOption}s used is {@link
    * StandardCopyOption#REPLACE_EXISTING}
    *
-   * @param path to move directory to
+   * @param path    to move directory to
    * @param options {@link CopyOption}s to use when calling the {@link Files#move(Path, Path,
-   *     CopyOption...)} method
+   *                CopyOption...)} method
    */
   public void move(String path, CopyOption... options) throws IOException {
     Files.move(Paths.get(getPath()), Paths.get(path), options);

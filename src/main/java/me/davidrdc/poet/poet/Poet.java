@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Objects;
 
 /**
- * Class containing utility methods aimed to the access and management of {@link File}s
+ * Class containing utility methods aimed to the access of files
  *
  * @author David Rodriguez
  */

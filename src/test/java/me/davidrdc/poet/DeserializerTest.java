@@ -12,34 +12,34 @@ import com.google.gson.JsonParser;
 import java.io.FileReader;
 import java.io.IOException;
 import me.davidrdc.poet.poet.Poet;
-import me.davidrdc.poet.poet.serializer.NoSerializerFoundException;
-import me.davidrdc.poet.poet.serializer.Serializer;
+import me.davidrdc.poet.poet.deserializer.Deserializer;
+import me.davidrdc.poet.poet.deserializer.NoDeserializerFoundException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class SerializerTest {
+public class DeserializerTest {
 
   @BeforeAll
   static void setUp() {
-    // Add json object serializer
-    Serializer.addSerializer(
+    // Add json object deserializer
+    Deserializer.addDeserializer(
         JsonObject.class, file -> JsonParser.parseReader(new FileReader(file)).getAsJsonObject());
-    Serializer.addSerializer(
+    Deserializer.addDeserializer(
         YamlMapping.class, file -> Yaml.createYamlInput(file).readYamlMapping());
   }
 
   @AfterAll
   static void cleanUp() {
     // Remove all serializers
-    Serializer.clearSerializers();
+    Deserializer.clearDeserializers();
   }
 
   @Test
   public void serializeFileToJsonObjectTest() {
     try {
       JsonObject object =
-          Serializer.serializeFile(
+          Deserializer.deserializeFile(
               Poet.getFileFromResources("test.json", this.getClass().getClassLoader()),
               JsonObject.class);
       JsonObject contact = object.get("contact").getAsJsonObject();
@@ -50,7 +50,7 @@ public class SerializerTest {
           () -> assertEquals("Doe", object.get("lastName").getAsString()),
           () -> assertEquals("+13053053005", contact.get("phoneNumber").getAsString()),
           () -> assertEquals("john@doe.com", contact.get("email").getAsString()));
-    } catch (NoSerializerFoundException | IOException e) {
+    } catch (NoDeserializerFoundException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -59,7 +59,7 @@ public class SerializerTest {
   public void serializeFileToYmlObjectTest() {
     try {
       YamlMapping mapping =
-          Serializer.serializeFile(
+          Deserializer.deserializeFile(
               Poet.getFileFromResources("test.yml", this.getClass().getClassLoader()),
               YamlMapping.class);
       YamlMapping contact = mapping.yamlMapping("contact");
@@ -70,7 +70,7 @@ public class SerializerTest {
           () -> assertEquals("Doe", mapping.string("lastName")),
           () -> assertEquals("+13053053005", contact.string("phoneNumber")),
           () -> assertEquals("john@doe.com", contact.string("email")));
-    } catch (NoSerializerFoundException | IOException e) {
+    } catch (NoDeserializerFoundException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -78,11 +78,11 @@ public class SerializerTest {
   @Test
   public void serializeNoSerializerTest() {
     assertThrows(
-        NoSerializerFoundException.class,
+        NoDeserializerFoundException.class,
         () ->
-            Serializer.serializeFile(
+            Deserializer.deserializeFile(
                 Poet.getFileFromResources("test.json", this.getClass().getClassLoader()),
                 JsonElement.class),
-        "No serializer found");
+        "No deserializer found");
   }
 }
