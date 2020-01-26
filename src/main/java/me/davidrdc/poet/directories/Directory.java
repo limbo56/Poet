@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Objects;
-import lombok.Getter;
 
 /**
  * This utility class that represents a directory/folder and it provides some utility methods that
