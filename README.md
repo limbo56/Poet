@@ -34,7 +34,7 @@ In the next section, I'm going to be showcasing some of the features of this lib
 ### Deserialization
 The [`Deserializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html) class is useful when you want a file to be serialized into a certain object type.
 
-To add a deserializer, you must call the [`Deserialize#addSerializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#addDeserializer-java.lang.Class-me.davidrdc.poet.poet.deserializer.PoetDeserializer-). For example, let's say we want to add a deserializer that transforms files into a [`JsonObject`](https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonObject.html). 
+To add a deserializer, you must call the [`Deserialize#addDeserializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#addDeserializer-java.lang.Class-me.davidrdc.poet.poet.deserializer.PoetDeserializer-). For example, let's say we want to add a deserializer that transforms files into a [`JsonObject`](https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonObject.html). 
 To achieve this, we need to add a deserializer as follows:
 ```java
 Deserialize.addDeserializer(
