@@ -17,7 +17,6 @@ import lombok.Getter;
  *
  * @author David Rodriguez
  */
-@Getter
 public class Directory extends File {
 
   /**

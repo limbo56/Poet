@@ -3,20 +3,26 @@ package me.davidrdc.poet.directories;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 /**
  * A class that groups {@link Directory} and combines them as one
  *
  * @author David Rodriguez
  */
-@Getter
-@RequiredArgsConstructor
 public class DirectoryBundle {
 
   private final List<Directory> directories;
+
+  /**
+   * Constructor
+   *
+   * @param directories to be bundled
+   */
+  public DirectoryBundle(List<Directory> directories) {
+    this.directories = directories;
+  }
 
   /**
    * Constructor
@@ -64,5 +70,10 @@ public class DirectoryBundle {
         .findFirst()
         .orElseThrow(FileNotFoundException::new)
         .getFile(name);
+  }
+
+  /** @return An unmodifiable {@link List} */
+  public List<Directory> getDirectories() {
+    return Collections.unmodifiableList(directories);
   }
 }
