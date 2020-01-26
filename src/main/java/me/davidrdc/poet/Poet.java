@@ -1,4 +1,4 @@
-package me.davidrdc.poet.poet;
+package me.davidrdc.poet;
 
 import java.io.File;
 import java.util.Objects;

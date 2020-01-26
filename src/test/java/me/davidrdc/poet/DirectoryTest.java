@@ -1,15 +1,12 @@
 package me.davidrdc.poet;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
-import me.davidrdc.poet.poet.Poet;
-import me.davidrdc.poet.poet.directories.Directory;
+import me.davidrdc.poet.directories.Directory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

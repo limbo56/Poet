@@ -1,4 +1,4 @@
-package me.davidrdc.poet.poet.deserializer;
+package me.davidrdc.poet.deserializer;
 
 import java.io.File;
 import java.io.IOException;

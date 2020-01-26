@@ -1,4 +1,4 @@
-package me.davidrdc.poet.poet.directories;
+package me.davidrdc.poet.directories;
 
 import java.io.File;
 import java.io.IOException;

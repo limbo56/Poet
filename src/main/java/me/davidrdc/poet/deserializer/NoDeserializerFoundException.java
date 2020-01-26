@@ -1,4 +1,4 @@
-package me.davidrdc.poet.poet.deserializer;
+package me.davidrdc.poet.deserializer;
 
 /**
  * An exception that is thrown whenever someone tries to serialize a certain file and there's no
