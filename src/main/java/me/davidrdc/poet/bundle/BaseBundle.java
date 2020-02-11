@@ -11,6 +11,7 @@ import me.davidrdc.poet.directories.Directory;
  * A base implementation of a {@link DirectoryBundle}
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public class BaseBundle implements DirectoryBundle {
 

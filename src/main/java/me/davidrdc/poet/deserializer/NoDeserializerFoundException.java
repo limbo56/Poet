@@ -5,6 +5,7 @@ package me.davidrdc.poet.deserializer;
  * matching deserializer for that type of file
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public class NoDeserializerFoundException extends Exception {
 

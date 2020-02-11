@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class containing utility methods to deserialize {@link File}s into a certain object
+ * Class containing utility methods to deserialize a {@link File} into a certain object
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public class Deserializer {
 
@@ -17,9 +18,9 @@ public class Deserializer {
   /**
    * Adds a deserializer to the {@link Deserializer#DESERIALIZERS} map
    *
-   * @param clazz        of the resultant object
+   * @param clazz of the resultant object
    * @param deserializer {@link PoetDeserializer}
-   * @param <T>          type of the resultant object
+   * @param <T> type of the resultant object
    */
   public static <T> void addDeserializer(Class<T> clazz, PoetDeserializer<T> deserializer) {
     DESERIALIZERS.put(clazz, deserializer);
@@ -40,21 +41,19 @@ public class Deserializer {
    * <p>This method uses the {@link Deserializer#findBestMatch(Class)} function if the class type
    * passed as a parameter is not in the {@link Deserializer#DESERIALIZERS} map
    *
-   * @param file  to parse
+   * @param file to parse
    * @param clazz to find deserializer
-   * @param <T>   resultant object
+   * @param <T> resultant object
    * @return The serialized file
    * @throws NoDeserializerFoundException if no deserializer was found
-   * @throws IOException                  if an error occurred accessing the file
+   * @throws IOException if an error occurred accessing the file
    */
   public static <T> T deserializeFile(File file, Class<T> clazz)
       throws NoDeserializerFoundException, IOException {
     return (T) getSerializer(clazz).deserialize(file);
   }
 
-  /**
-   * Clears the map of deserializers
-   */
+  /** Clears the map of deserializers */
   public static void clearDeserializers() {
     DESERIALIZERS.clear();
   }

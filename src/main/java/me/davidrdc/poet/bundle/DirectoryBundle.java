@@ -9,6 +9,7 @@ import me.davidrdc.poet.directories.Directory;
  * Represents a list of {@link Directory} bundled together
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public interface DirectoryBundle {
 

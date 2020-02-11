@@ -39,7 +39,7 @@ public class DeserializerTest {
     try {
       JsonObject object =
           Deserializer.deserializeFile(
-              Poet.getFileFromResources("test.json", this.getClass().getClassLoader()),
+              FileUtils.getFileFromResources("test.json", this.getClass().getClassLoader()),
               JsonObject.class);
       JsonObject contact = object.get("contact").getAsJsonObject();
 
@@ -59,7 +59,7 @@ public class DeserializerTest {
     try {
       YamlMapping mapping =
           Deserializer.deserializeFile(
-              Poet.getFileFromResources("test.yml", this.getClass().getClassLoader()),
+              FileUtils.getFileFromResources("test.yml", this.getClass().getClassLoader()),
               YamlMapping.class);
       YamlMapping contact = mapping.yamlMapping("contact");
 
@@ -80,7 +80,7 @@ public class DeserializerTest {
         NoDeserializerFoundException.class,
         () ->
             Deserializer.deserializeFile(
-                Poet.getFileFromResources("test.json", this.getClass().getClassLoader()),
+                FileUtils.getFileFromResources("test.json", this.getClass().getClassLoader()),
                 JsonElement.class),
         "No deserializer found");
   }

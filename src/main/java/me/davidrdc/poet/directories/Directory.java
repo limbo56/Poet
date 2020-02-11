@@ -17,6 +17,7 @@ import java.util.Objects;
  * move files
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public class Directory extends File {
 
@@ -82,9 +83,9 @@ public class Directory extends File {
    * <p>This method uses the {@link Files#move(Path, Path, CopyOption...)} method to move the
    * directory and it's contents with the {@link CopyOption} provided
    *
-   * @param path    to move directory to
+   * @param path to move directory to
    * @param options {@link CopyOption} to use when calling the {@link Files#move(Path, Path,
-   *                CopyOption...)} method
+   *     CopyOption...)} method
    * @throws IOException any io error that might occur while moving the file
    */
   public void move(String path, CopyOption... options) throws IOException {
@@ -110,10 +111,10 @@ public class Directory extends File {
    *
    * <p>This method uses the {@link Files#move(Path, Path, CopyOption...)} method to move the file.
    *
-   * @param name    of the file to move
-   * @param path    to move the file to
+   * @param name of the file to move
+   * @param path to move the file to
    * @param options {@link CopyOption}s to use when calling the {@link Files#move(Path, Path,
-   *                CopyOption...)} method
+   *     CopyOption...)} method
    * @throws IOException any io error that might occur while moving the file
    */
   public void moveFile(String name, String path, CopyOption... options) throws IOException {

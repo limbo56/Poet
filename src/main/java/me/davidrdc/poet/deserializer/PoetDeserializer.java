@@ -8,6 +8,7 @@ import java.io.IOException;
  *
  * @param <T> resultant object type
  * @author David Rodriguez
+ * @since 1.0
  */
 public interface PoetDeserializer<T> {
 

@@ -9,6 +9,7 @@ import me.davidrdc.poet.bundle.DirectoryBundle;
  * Static factory methods to create {@link Directory} and {@link DirectoryBundle}
  *
  * @author David Rodriguez
+ * @since 1.0
  */
 public class Directories {
 
