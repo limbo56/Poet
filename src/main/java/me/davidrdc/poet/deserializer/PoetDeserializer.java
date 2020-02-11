@@ -13,7 +13,7 @@ import java.io.IOException;
 public interface PoetDeserializer<T> {
 
   /**
-   * Serializes a {@link File} and returns an object of type
+   * Deserializes a {@link File} and returns an object of type
    *
    * @param file to parse
    * @return The resultant object

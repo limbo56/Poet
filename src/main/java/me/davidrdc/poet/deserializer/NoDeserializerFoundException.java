@@ -1,7 +1,7 @@
 package me.davidrdc.poet.deserializer;
 
 /**
- * An exception that is thrown whenever someone tries to serialize a certain file and there's no
+ * An exception that is thrown whenever someone tries to deserialize a certain file and there's no
  * matching deserializer for that type of file
  *
  * @author David Rodriguez
