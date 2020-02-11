@@ -7,7 +7,6 @@ import java.util.Objects;
  * Class containing utility methods aimed to the access of files
  *
  * @author David Rodriguez
- * @since 1.0
  */
 public class FileUtils {
 

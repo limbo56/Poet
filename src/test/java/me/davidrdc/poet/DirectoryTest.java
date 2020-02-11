@@ -1,11 +1,13 @@
 package me.davidrdc.poet;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
+import me.davidrdc.poet.directories.Directories;
 import me.davidrdc.poet.directories.Directory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -21,7 +23,7 @@ public class DirectoryTest {
   static void setUp() {
     DirectoryTest.testDirectory =
         new Directory(
-            Poet.getFileFromResources("testDirectory", DirectoryTest.class.getClassLoader()));
+            FileUtils.getFileFromResources("testDirectory", DirectoryTest.class.getClassLoader()));
   }
 
   private static void assertArrayEqualsSorted(Object[] array1, Object[] array2, String message) {
@@ -43,28 +45,48 @@ public class DirectoryTest {
   @Test
   @Order(2)
   public void addFilesToDirectoryTest() {
-    try {
-      testDirectory.addFile(new File("other.yml"));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    // Add other.yml to directory
+    assertDoesNotThrow(
+        () -> testDirectory.addFile(new File("other.yml")),
+        "Add other.yml to testDirectory directory");
 
     // Check if file was added to directory
-    assertArrayEqualsSorted(
-        new String[] {"other.yml", "some.txt", "test.txt"},
-        Objects.requireNonNull(testDirectory.list()),
-        "Add file to directory");
+    assertTrue(testDirectory.contains("other.yml"));
   }
 
   @Test
   @Order(3)
+  public void moveFilesTest() {
+    // Create new directory
+    File testFile = new File(testDirectory.getPath(), "test");
+    testFile.mkdir();
+    Directory directory = Directories.from(testFile);
+
+    // Move some.txt to test
+    assertDoesNotThrow(
+        () -> testDirectory.moveFile("some.txt", directory.getPath()),
+        "Moving some.txt to test directory");
+
+    // Check if the directory contains the file
+    assertDoesNotThrow(() -> assertTrue(directory.contains("some.txt")), "Contains file test");
+
+    // Move file back to testDirectory
+    assertDoesNotThrow(
+        () -> directory.moveFile("some.txt", testDirectory.getPath()),
+        "Moving some.txt to testDirectory class");
+  }
+
+  @Test
+  @Order(4)
   public void removeFilesFromDirectoryTest() {
-    testDirectory.removeFile("other.yml");
+    // Remove files from directory test
+    assertTrue(testDirectory.removeFile("test"), "File test was removed");
+    assertTrue(testDirectory.removeFile("other.yml"), "File other.yml was removed");
 
     // Check if file was removed from the directory
     assertArrayEqualsSorted(
-        new String[] {"some.txt", "test.txt"},
+        new String[]{"some.txt", "test.txt"},
         Objects.requireNonNull(testDirectory.list()),
-        "Remove file from directory");
+        "Files were removed");
   }
 }

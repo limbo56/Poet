@@ -1,9 +1,12 @@
 package me.davidrdc.poet.directories;
 
+import java.io.File;
 import java.nio.file.Path;
+import me.davidrdc.poet.bundle.BaseBundle;
+import me.davidrdc.poet.bundle.DirectoryBundle;
 
 /**
- * Class containing utility methods for the {@link Directory} class.
+ * Static factory methods to create {@link Directory} and {@link DirectoryBundle}
  *
  * @author David Rodriguez
  */
@@ -30,12 +33,22 @@ public class Directories {
   }
 
   /**
+   * Creates a {@link Directory} based on the path provided
+   *
+   * @param file {@link File} which is the directory
+   * @return {@link Directory}
+   */
+  public static Directory from(File file) {
+    return new Directory(file);
+  }
+
+  /**
    * Combines a list of {@link Directory} as one
    *
    * @param directory {@link Directory} to combine
-   * @return {@link DirectoryBundle} bundle of directories
+   * @return {@link DirectoryBundle}
    */
   public static DirectoryBundle combine(Directory... directory) {
-    return new DirectoryBundle(directory);
+    return new BaseBundle(directory);
   }
 }
