@@ -1,17 +1,18 @@
-package me.davidrdc.poet.directories;
+package me.davidrdc.poet.bundle;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import me.davidrdc.poet.directories.Directory;
 
 /**
- * A class that groups {@link Directory} and combines them as one
+ * A base implementation of a {@link DirectoryBundle}
  *
  * @author David Rodriguez
  */
-public class DirectoryBundle {
+public class BaseBundle implements DirectoryBundle {
 
   private final List<Directory> directories;
 
@@ -20,7 +21,7 @@ public class DirectoryBundle {
    *
    * @param directories to be bundled
    */
-  public DirectoryBundle(List<Directory> directories) {
+  public BaseBundle(List<Directory> directories) {
     this.directories = directories;
   }
 
@@ -29,17 +30,11 @@ public class DirectoryBundle {
    *
    * @param directories to be bundled
    */
-  public DirectoryBundle(Directory... directories) {
+  public BaseBundle(Directory... directories) {
     this(Arrays.asList(directories));
   }
 
-  /**
-   * Returns a {@link Directory} from the {@link DirectoryBundle} based on the path provided
-   *
-   * @param path where {@link Directory} is located
-   * @return {@link Directory} found
-   * @throws FileNotFoundException exception thrown if directory isn't found
-   */
+  @Override
   public Directory getDirectory(String path) throws FileNotFoundException {
     return directories.stream()
         .filter(directory -> directory.getPath().equals(path))
@@ -47,23 +42,12 @@ public class DirectoryBundle {
         .orElseThrow(() -> new FileNotFoundException("Couldn't find directory at path: " + path));
   }
 
-  /**
-   * Returns whether this {@link DirectoryBundle} contains a certain file
-   *
-   * @param name of the file to check
-   * @return if the file is in the directory
-   */
+  @Override
   public boolean contains(String name) {
     return directories.stream().anyMatch(directory -> directory.contains(name));
   }
 
-  /**
-   * Gets a certain file contained in this {@link DirectoryBundle}
-   *
-   * @param name of the file
-   * @return {@link File} found
-   * @throws java.io.FileNotFoundException if the file wasn't found
-   */
+  @Override
   public File getFile(String name) throws FileNotFoundException {
     return directories.stream()
         .filter(directory -> directory.contains(name))
@@ -72,7 +56,7 @@ public class DirectoryBundle {
         .getFile(name);
   }
 
-  /** @return An unmodifiable {@link List} */
+  @Override
   public List<Directory> getDirectories() {
     return Collections.unmodifiableList(directories);
   }

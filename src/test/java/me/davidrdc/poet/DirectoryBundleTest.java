@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.FileNotFoundException;
+import me.davidrdc.poet.bundle.DirectoryBundle;
 import me.davidrdc.poet.directories.Directories;
 import me.davidrdc.poet.directories.Directory;
-import me.davidrdc.poet.directories.DirectoryBundle;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
