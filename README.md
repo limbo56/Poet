@@ -34,26 +34,25 @@ In the next section, I'm going to be showcasing some of the features of this lib
 ### Deserialization
 The [`Deserializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html) class is useful when you want a file to be serialized into a certain object type.
 
-To add a deserializer, you must call the [`Deserialize#addDeserializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#addDeserializer-java.lang.Class-me.davidrdc.poet.poet.deserializer.PoetDeserializer-). For example, let's say we want to add a deserializer that transforms files into a [`JsonObject`](https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonObject.html). 
+To add a deserializer, you must call the [`Deserializer#addDeserializer`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#addDeserializer-java.lang.Class-me.davidrdc.poet.poet.deserializer.PoetDeserializer-). For example, lets say we want to add a deserializer that transforms files into a [`JsonObject`](https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonObject.html). 
 To achieve this, we need to add a deserializer as follows:
 ```java
-Deserialize.addDeserializer(
+Deserializer.addDeserializer(
     JsonObject.class, 
     file -> JsonParser.parseReader(new FileReader(file)).getAsJsonObject()
 );
 ```
 
-After that, to deserialize the file, we would need to call the [`Deserialize#deserializeFile`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#deserializeFile-java.io.File-java.lang.Class-) method:
+After that, to deserialize the file, we would call the [`Deserializer#deserializeFile`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/deserializer/Deserializer.html#deserializeFile-java.io.File-java.lang.Class-) method:
 ```java
 JsonObject object = Deserializer.deserializeFile(file, JsonObject.class);
 ```
 
 ### Directories
-The [`Directory`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/directories/Directory.html) class is aimed to ease the handling of directories. 
-It contains a variety of methods useful for handling files which extends the [`File`](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) class.
+The [`Directory`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/directories/Directory.html) class is aimed to ease the handling of directories. It contains a variety of methods useful for handling the files in a directory.
 
 ### Bundles
-You can bundle multiple directories using the [`DirectoryBundle`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/directories/DirectoryBundle.html) 
+You can bundle multiple directories using the [`DirectoryBundle`](https://javadoc.jitpack.io/com/github/limbo56/Poet/master-SNAPSHOT/javadoc/me/davidrdc/poet/bundle/DirectoryBundle.html) 
 class. This class helps when you want to access common files in multiple directories. For example, this would be useful for localization.
 
 ## License
